@@ -1,140 +1,116 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plateforme de Questions Locales - Landing Page</title>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <style>
-        /* Styles personnalisés pour les animations, polices, etc. (voir section CSS plus bas) */
-    </style>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 font-sans antialiased">
-
-    <!-- Section Héroïque -->
-    <header class="relative py-24 bg-cover bg-center" style="background-image: url('images/hero-bg.jpg')">
-        <div class="absolute inset-0 bg-black opacity-40"></div>
-        <div class="container mx-auto text-center relative z-10">
-            <h1 class="text-5xl font-bold text-white leading-tight mb-4">
-                Découvrez les questions locales.<br>
-                Explorez, connectez, apprenez.
-            </h1>
-            <p class="text-xl text-gray-200 mb-8">
-                La plateforme qui vous connecte aux connaissances de votre communauté.
-            </p>
-            <div class="flex justify-center space-x-4">
-                <a href="#" class="inline-block bg-emerald-500 hover:bg-emerald-700 text-white font-bold py-3 px-8 rounded-full transition duration-300">
-                    Essayer gratuitement
-                </a>
-                <a href="#features" class="inline-block text-white hover:text-gray-300 font-semibold py-3 px-6 rounded-full border border-white transition duration-300">
-                    En savoir plus
-                </a>
-            </div>
-        </div>
-    </header>
-
-    <!-- Section "Pourquoi [Plateforme]?" -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto text-center">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8">Pourquoi choisir Qwesta ?</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="p-6 bg-gray-50 rounded-lg shadow-md hover:shadow-xl transition duration-300">
-                    <i class="fas fa-map-marker-alt fa-3x text-emerald-500 mb-4"></i>
-                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Pertinence Locale</h3>
-                    <p class="text-gray-600">Trouvez des réponses à vos questions dans votre quartier.</p>
-                </div>
-                <div class="p-6 bg-gray-50 rounded-lg shadow-md hover:shadow-xl transition duration-300">
-                    <i class="fas fa-users fa-3x text-emerald-500 mb-4"></i>
-                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Communauté Active</h3>
-                    <p class="text-gray-600">Connectez-vous avec des experts et des passionnés.</p>
-                </div>
-                <div class="p-6 bg-gray-50 rounded-lg shadow-md hover:shadow-xl transition duration-300">
-                    <i class="fas fa-check-circle fa-3x text-emerald-500 mb-4"></i>
-                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Informations Fiables</h3>
-                    <p class="text-gray-600">Des réponses vérifiées par des utilisateurs de confiance.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section "Fonctionnalités Clés" -->
-    <section id="features" class="py-16 bg-gray-100">
-        <div class="container mx-auto text-center">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8">Fonctionnalités qui vous connectent au monde local</h2>
-
-            <!-- Carousel de fonctionnalités (exemple) -->
-            <div class="relative">
-              <div id="featureCarousel" class="flex overflow-x-auto snap-x space-x-4 p-4">
-                  <!-- Feature Card 1 -->
-                  <div class="snap-start w-full md:w-1/2 lg:w-1/3 p-4 bg-white rounded-lg shadow-md flex-shrink-0">
-                      <img src="images/geolocation.jpg" alt="Géolocalisation Précise" class="rounded-md mb-4 h-40 object-cover w-full">
-                      <h3 class="text-xl font-semibold text-gray-700 mb-2">Géolocalisation Précise</h3>
-                      <p class="text-gray-600">Trouvez les questions et réponses les plus proches de vous.</p>
-                  </div>
-                  <!-- Feature Card 2 -->
-                  <div class="snap-start w-full md:w-1/2 lg:w-1/3 p-4 bg-white rounded-lg shadow-md flex-shrink-0">
-                      <img src="images/search.jpg" alt="Recherche Avancée" class="rounded-md mb-4 h-40 object-cover w-full">
-                      <h3 class="text-xl font-semibold text-gray-700 mb-2">Recherche Avancée</h3>
-                      <p class="text-gray-600">Filtrez les questions par mots-clés, catégories et emplacement.</p>
-                  </div>
-                  <!-- Feature Card 3 -->
-                  <div class="snap-start w-full md:w-1/2 lg:w-1/3 p-4 bg-white rounded-lg shadow-md flex-shrink-0">
-                      <img src="images/notifications.jpg" alt="Notifications Personnalisées" class="rounded-md mb-4 h-40 object-cover w-full">
-                      <h3 class="text-xl font-semibold text-gray-700 mb-2">Notifications Personnalisées</h3>
-                      <p class="text-gray-600">Soyez averti des nouvelles questions et réponses qui vous intéressent.</p>
-                  </div>
-                </div>
-                <!-- Navigation du Carrousel (Boutons) -->
-                <div class="absolute top-1/2 transform -translate-y-1/2 left-2">
-                  <button onclick="scrollCarousel(-1)" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-full">
-                    <i class="fas fa-chevron-left"></i>
-                  </button>
-                </div>
-                <div class="absolute top-1/2 transform -translate-y-1/2 right-2">
-                  <button onclick="scrollCarousel(1)" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-full">
-                    <i class="fas fa-chevron-right"></i>
-                  </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section "Témoignages" -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto text-center">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8">Ce que nos utilisateurs disent</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="p-6 bg-gray-50 rounded-lg shadow-md">
-                    <p class="text-gray-700 italic">"[Plateforme] m'a permis de trouver des réponses à des questions locales que je ne trouvais nulle part ailleurs."</p>
-                    <p class="mt-4 font-semibold text-gray-800">- John Doe, Paris</p>
-                </div>
-                <div class="p-6 bg-gray-50 rounded-lg shadow-md">
-                    <p class="text-gray-700 italic">"J'adore la communauté active de [Plateforme]. J'ai rencontré des gens formidables et appris plein de choses."</p>
-                    <p class="mt-4 font-semibold text-gray-800">- Jane Smith, Lyon</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section "Appel à l'Action Final" -->
-    <section class="py-24 bg-emerald-100">
-        <div class="container mx-auto text-center">
-            <h2 class="text-4xl font-bold text-emerald-800 mb-8">Prêt à explorer votre communauté ?</h2>
-            <p class="text-xl text-emerald-700 mb-8">Rejoignez notre communauté et découvrez les réponses aux questions qui vous intéressent.</p>
-            <a href="#" class="inline-block bg-emerald-500 hover:bg-emerald-700 text-white font-bold py-4 px-12 rounded-full transition duration-300">
-                S'inscrire gratuitement
-            </a>
-        </div>
-    </section>
-
-    <!-- Pied de Page -->
-    <footer class="bg-gray-800 py-8 text-white text-center">
-        <div class="container mx-auto">
-            <p>© 2025 Plateforme de Questions Locales. Tous droits réservés.</p>
-        </div>
-    </footer>
-
-    <script src="https://kit.fontawesome.com/YOUR_FONT_AWESOME_KIT.js" crossorigin="anonymous"></script>
-    <script src="{{ asset('js/app.js') }}"></script>
+<body>
+    
 </body>
 </html>
+<!-- source:https://codepen.io/owaiswiz/pen/jOPvEPB -->
+<div class="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
+    <div class="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
+        <div class="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
+            <div>
+                <img src="https://drive.google.com/uc?export=view&id=1MFiKAExRFF0-2YNpAZzIu1Sh52J8r16v"
+                    class="w-mx-auto" />
+            </div>
+            <div class="mt-12 flex flex-col items-center">
+                <div class="w-full flex-1 mt-8">
+                    <div class="flex flex-col items-center">
+                        <button
+                            class="w-full max-w-xs font-bold shadow-sm rounded-lg py-3 bg-green-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline">
+                            <div class="bg-white p-2 rounded-full">
+                                <svg class="w-4" viewBox="0 0 533.5 544.3">
+                                    <path
+                                        d="M533.5 278.4c0-18.5-1.5-37.1-4.7-55.3H272.1v104.8h147c-6.1 33.8-25.7 63.7-54.4 82.7v68h87.7c51.5-47.4 81.1-117.4 81.1-200.2z"
+                                        fill="#4285f4" />
+                                    <path
+                                        d="M272.1 544.3c73.4 0 135.3-24.1 180.4-65.7l-87.7-68c-24.4 16.6-55.9 26-92.6 26-71 0-131.2-47.9-152.8-112.3H28.9v70.1c46.2 91.9 140.3 149.9 243.2 149.9z"
+                                        fill="#34a853" />
+                                    <path
+                                        d="M119.3 324.3c-11.4-33.8-11.4-70.4 0-104.2V150H28.9c-38.6 76.9-38.6 167.5 0 244.4l90.4-70.1z"
+                                        fill="#fbbc04" />
+                                    <path
+                                        d="M272.1 107.7c38.8-.6 76.3 14 104.4 40.8l77.7-77.7C405 24.6 339.7-.8 272.1 0 169.2 0 75.1 58 28.9 150l90.4 70.1c21.5-64.5 81.8-112.4 152.8-112.4z"
+                                        fill="#ea4335" />
+                                </svg>
+                            </div>
+                            <span class="ml-4">
+                                Sign In with Google
+                            </span>
+                        </button>
+
+                    </div>
+
+                    <div class="my-12 border-b text-center">
+                        <div
+                            class="leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2">
+                            Or sign In with Cartesian E-mail
+                        </div>
+                    </div>
+
+                    <form action="{{ route('auth.register.store') }}" method="POST">
+                        @csrf
+                        <div class="mx-auto max-w-xs">
+                            <input
+                                class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                                type="name" 
+                                name="name"
+                                placeholder="user name" />
+                                
+                            @error('name')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
+                    
+                            <input
+                                class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                                type="email" 
+                                name="email"
+                                placeholder="Email" />
+                                
+                            @error('email')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
+                    
+                            <input
+                                class="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
+                                type="password" 
+                                name="password"
+                                placeholder="Password" />
+                                
+                            @error('password')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
+                    
+                            <button type="submit"
+                                class="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
+                                <span class="ml-3">S'inscrire</span>
+                            </button>
+                        </div>
+                    </form>
+                        <p class="mt-6 text-xs text-gray-600 text-center">
+                            I agree to abide by Cartesian Kinetics
+                            <a href="#" class="border-b border-gray-500 border-dotted">
+                                Terms of Service
+                            </a>
+                            and its
+                            <a href="#" class="border-b border-gray-500 border-dotted">
+                                Privacy Policy
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex-1 bg-green-100 text-center hidden lg:flex">
+            <div class="m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat"
+                style="background-image: url('https://drive.google.com/uc?export=view&id=1KZ_Ub_2lZ0dHbKV0fAIhxVhiQA183RCz');">
+            </div>
+        </div>
+    </div>
+</div>

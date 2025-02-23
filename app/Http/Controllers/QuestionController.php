@@ -2,13 +2,23 @@
 namespace App\Http\Controllers;
 use App\Models\Question;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 
 class QuestionController extends Controller
 {
     public function showQuestions(Request $request){
-      $questions = Question::with('answers.user') // Charger les réponses et l'utilisateur de chaque réponse
+      $questions = Question::with('answers.user') 
         ->paginate(9);
+        $cacheKey = 'questions_page_' . $request->get('page', 1);
 
+        // Utiliser remember au lieu de put
+        $questions = Cache::remember($cacheKey, 60, function () {
+            return Question::with('answers.user')->paginate(9);
+        });
+        $questions = Cache::remember('questions', 60, function() {
+          return Question::with('answers.user')->paginate(9);
+      });
        return view('questions',compact('questions'));
      }
 
@@ -19,9 +29,9 @@ class QuestionController extends Controller
       }
      
      public function store(Request $request){
-    // {
+    
         $validated = $request->validate([
-            'questionTitle' => 'required|max:255',
+            'questionTitle' => 'required|max:100',
             'questionDetails' => 'required',
             'latitude' => 'required|numeric',
             'longitude' => 'required|numeric',
@@ -29,7 +39,7 @@ class QuestionController extends Controller
         ]);
 
         $question = Question::create([
-            // 'user_id' => auth()->id(), // Assurez-vous d'être authentifié
+            'user_id' => Auth::id(),
             'title' => $validated['questionTitle'],
             'content' => $validated['questionDetails'],
             'latitude' => $validated['latitude'],
@@ -37,7 +47,6 @@ class QuestionController extends Controller
             'location_name' => $validated['location_name'] ?? null
         ]);
 
-        return redirect()->route('questions', $question)->with('success', 'Question créée avec succès !');
-
+        return redirect()->route('questions')->with('success', 'Réponse ajoutée avec succès!');
       }
 }

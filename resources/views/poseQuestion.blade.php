@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .form-container {
             max-width: 800px;
@@ -11,7 +13,7 @@
             padding: 2rem;
             background: linear-gradient(145deg, #ffffff, #f5f5f5);
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
         .form-group {
@@ -50,7 +52,7 @@
             width: 100%;
             border-radius: 10px;
             margin: 1rem 0;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .search-container {
@@ -65,7 +67,7 @@
             right: 0;
             background: white;
             border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             z-index: 1000;
             max-height: 200px;
             overflow-y: auto;
@@ -117,20 +119,34 @@
         }
     </style>
 </head>
+
 <body>
     <div class="form-container">
-        <form  method="POST" action="{{ route('store')}}" id="luxuryForm">
+        <form method="POST" action="{{ route('store') }}" id="luxuryForm">
             @csrf
             <!-- Section Question -->
             <div class="form-group">
                 <h2 class="section-title">Votre Question</h2>
                 <label class="form-label">Titre de la question</label>
-                <input type="text" class="form-control" id="questionTitle" name="questionTitle" placeholder="Entrez le titre de votre question " required>
+                <input type="text" class="form-control" id="questionTitle" name="questionTitle"
+                    placeholder="Entrez le titre de votre question ">
+                    @error('questionTitle')
+                    <div class="text-red-500 bg-red-100 border border-red-400 p-2 rounded-lg">
+                        {{ $message }}
+                    </div>
+                @enderror
+                
             </div>
 
             <div class="form-group">
                 <label class="form-label">Détails de la question</label>
-                <textarea class="form-control" id="questionDetails" name="questionDetails" placeholder="Décrivez votre question en détail..." required></textarea>
+                <textarea class="form-control" id="questionDetails" name="questionDetails"
+                    placeholder="Décrivez votre question en détail..." required></textarea>
+                    @error('questionDetails')
+                    <div class="text-red-500 bg-red-100 border border-red-400 p-2 rounded-lg">
+                        {{ $message }}
+                    </div>
+                @enderror
             </div>
 
             <!-- Section Localisation -->
@@ -138,7 +154,8 @@
             <div class="form-group">
                 <label class="form-label">Rechercher un lieu</label>
                 <div class="search-container">
-                    <input type="text" id="searchInput" class="form-control" placeholder="Commencez à taper un lieu...">
+                    <input type="text" id="searchInput" class="form-control"
+                        placeholder="Commencez à taper un lieu...">
                     <div id="searchResults"></div>
                     <div class="suggestions-container">
                         <div class="suggestion-tag">Paris</div>
@@ -157,7 +174,7 @@
                     <label class="form-label">Adresse sélectionnée</label>
                     <input type="text" id="location_display" class="form-control" readonly>
                 </div>
-                
+
                 <input type="hidden" id="latitude" name="latitude">
                 <input type="hidden" id="longitude" name="longitude">
                 <input type="hidden" id="location_name" name="location_name">
@@ -288,4 +305,5 @@
         });
     </script>
 </body>
+
 </html>

@@ -15,7 +15,11 @@ class Question extends Model
         'longitude', 
         'location_name'
     ];
-
+    public function answers()
+    {
+        return $this->hasMany(Answer::class);
+    }
+    
     // Relation avec l'utilisateur
     public function user()
     {

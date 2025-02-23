@@ -11,9 +11,94 @@
     </style>
 </head>
 <body class="bg-gray-100 font-sans antialiased">
-
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <!-- Logo et Nom -->
+                <div class="flex items-center">
+                    <a href="/" class="flex items-center">
+                        <span class="text-2xl font-bold text-emerald-600">Qwesta</span>
+                    </a>
+                </div>
+    
+                <!-- Navigation principale -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="{{ route('questions') }}" class="text-gray-600 hover:text-emerald-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300">
+                        Questions
+                    </a>
+                    
+                    @auth
+                        <a href="" class="text-gray-600 hover:text-emerald-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300">
+                            Mon Profil
+                        </a>
+                        <form method="GET" action="/logout" class="inline">
+                            @csrf
+                            <button type="submit" class="bg-emerald-500 text-white px-4 py-2 rounded-full hover:bg-emerald-600 transition duration-300">
+                                Déconnexion
+                            </button>
+                        </form>
+                    @else
+                        <a href="{{ route('register') }}" class="text-gray-600 hover:text-emerald-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300">
+                            S'inscrire
+                        </a>
+                        <a href="{{ route('login') }}" class="bg-emerald-500 text-white px-4 py-2 rounded-full hover:bg-emerald-600 transition duration-300">
+                            Connexion
+                        </a>
+                    @endauth
+                </div>
+    
+                <!-- Menu mobile -->
+                <div class="md:hidden flex items-center">
+                    <button class="mobile-menu-button p-2 rounded-md hover:bg-gray-100 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Menu mobile (caché par défaut) -->
+        <div class="md:hidden hidden mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="{{ route('questions') }}" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-emerald-600 hover:bg-gray-50">
+                    Questions
+                </a>
+                
+                @auth
+                    <a href="" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-emerald-600 hover:bg-gray-50">
+                        Mon Profil
+                    </a>
+                    <form method="GET" action="/logout" class="block">
+                        @csrf
+                        <button type="submit" class="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-emerald-600 hover:bg-gray-50">
+                            Déconnexion
+                        </button>
+                    </form>
+                @else
+                    <a href="{{ route('register') }}" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-emerald-600 hover:bg-gray-50">
+                        S'inscrire
+                    </a>
+                    <a href="{{ route('login') }}" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-emerald-600 hover:bg-gray-50">
+                        Connexion
+                    </a>
+                @endauth
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Ajoutez ce script pour le menu mobile -->
+    <script>
+        const btn = document.querySelector('.mobile-menu-button');
+        const menu = document.querySelector('.mobile-menu');
+    
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
     <!-- Section Héroïque -->
     <header class="relative py-24 bg-cover bg-center" style="background-image: url('images/hero-bg.jpg')">
+        
         <div class="absolute inset-0 bg-black opacity-40"></div>
         <div class="container mx-auto text-center relative z-10">
             <h1 class="text-5xl font-bold text-white leading-tight mb-4">
